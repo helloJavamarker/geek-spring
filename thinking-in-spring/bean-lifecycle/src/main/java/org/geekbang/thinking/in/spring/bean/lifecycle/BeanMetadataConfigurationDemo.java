@@ -31,14 +31,17 @@ import org.springframework.core.io.support.EncodedResource;
  */
 public class BeanMetadataConfigurationDemo {
 
+    //判断可以加标记位
     public static void main(String[] args) {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
         // 实例化基于 Properties 资源 BeanDefinitionReader
+
+        //见PropertiesBeanDefinitionReader的javadoc
         PropertiesBeanDefinitionReader beanDefinitionReader = new PropertiesBeanDefinitionReader(beanFactory);
-        String location = "META-INF/user.properties";
+        String location = "META-INF/user.properties";//可以写多个??
         // 基于 ClassPath 加载 properties 资源
         Resource resource = new ClassPathResource(location);
-        // 指定字符编码 UTF-8
+        // 指定字符编码 UTF-8  读取properties默认使用的是iso8859-1编码的
         EncodedResource encodedResource = new EncodedResource(resource, "UTF-8");
         int beanNumbers = beanDefinitionReader.loadBeanDefinitions(encodedResource);
         System.out.println("已加载 BeanDefinition 数量：" + beanNumbers);

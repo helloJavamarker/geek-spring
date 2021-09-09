@@ -51,14 +51,20 @@ public class DependencySourceDemo {
 
     @PostConstruct
     public void initByInjection() {
+        //false
         System.out.println("beanFactory == applicationContext " + (beanFactory == applicationContext));
+        //true
         System.out.println("beanFactory == applicationContext.getBeanFactory() " + (beanFactory == applicationContext.getAutowireCapableBeanFactory()));
+        //true
         System.out.println("resourceLoader == applicationContext " + (resourceLoader == applicationContext));
+        //true
         System.out.println("ApplicationEventPublisher == applicationContext " + (applicationEventPublisher == applicationContext));
+        // 在AbstractApplicationContext
     }
 
     @PostConstruct
     public void initByLookup() {
+        //这四个类型不能用来getBean  只能注入,不能查找
         getBean(BeanFactory.class);
         getBean(ApplicationContext.class);
         getBean(ResourceLoader.class);
@@ -67,6 +73,8 @@ public class DependencySourceDemo {
 
     private <T> T getBean(Class<T> beanType) {
         try {
+            //依赖注入和依赖查找区别,依赖注入会多一个非spring容器管理对象,默认注入了四个非容器管理对象,其中三个是相等的
+            //可以通过objectProvider注入
             return beanFactory.getBean(beanType);
         } catch (NoSuchBeanDefinitionException e) {
             System.err.println("当前类型" + beanType.getName() + " 无法在 BeanFactory 中查找!");

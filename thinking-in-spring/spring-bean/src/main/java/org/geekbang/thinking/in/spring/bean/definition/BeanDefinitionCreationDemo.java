@@ -32,12 +32,20 @@ public class BeanDefinitionCreationDemo {
 
     public static void main(String[] args) {
 
-        // 1.通过 BeanDefinitionBuilder 构建
+        // 1.通过 BeanDefinitionBuilder 构建   就是传统的builder模式
         BeanDefinitionBuilder beanDefinitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(User.class);
         // 通过属性设置
         beanDefinitionBuilder
                 .addPropertyValue("id", 1)
                 .addPropertyValue("name", "小马哥");
+        //和xml配置bean的功能一样
+        //<bean id="user" class="org.geekbang.thinking.in.spring.ioc.overview.domain.User">
+        //        <property name="id" value="1"/>
+        //        <property name="name" value="小马哥"/>
+        //</bean>
+
+
+
         // 获取 BeanDefinition 实例
         BeanDefinition beanDefinition = beanDefinitionBuilder.getBeanDefinition();
         // BeanDefinition 并非 Bean 终态，可以自定义修改

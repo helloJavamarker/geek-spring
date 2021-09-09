@@ -67,7 +67,7 @@ public class BeanScopeDemo implements DisposableBean {
     private User singletonUser1;
 
     @Autowired
-    @Qualifier("prototypeUser")
+    @Qualifier("prototypeUser")//Qualifier限定查找的范围
     private User prototypeUser;
 
     @Autowired

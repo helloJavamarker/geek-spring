@@ -31,9 +31,10 @@ import org.springframework.core.env.Environment;
  */
 public class DependencyInjectionDemo {
 
+    // TODO p23
     public static void main(String[] args) {
         // 配置 XML 配置文件
-        // 启动 Spring 应用上下文
+        // 启动 Spring 应用上下文    这里会同时存在两个上下文
 //        BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-injection-context.xml");
 
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:/META-INF/dependency-injection-context.xml");
@@ -51,7 +52,7 @@ public class DependencyInjectionDemo {
 
         System.out.println(userFactory.getObject() == applicationContext);
 
-        // 依赖查找（错误）
+        // 依赖查找（错误）  BeanFactory并不是一个普通的bean,直接通过依赖查找会报错   TODO why
 //        System.out.println(beanFactory.getBean(BeanFactory.class));
 
         // 依赖来源三：容器內建 Bean

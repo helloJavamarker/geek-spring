@@ -57,6 +57,7 @@ public class User implements BeanNameAware {
     /**
      * 当前 Bean 的名称
      */
+    //使用transient可以让序列化或者反序列化的时候忽略这个字段
     private transient String beanName;
 
     public Long getId() {

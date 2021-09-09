@@ -63,6 +63,7 @@ public class ObjectProviderDemo { // @Configuration 是非必须注解
         System.out.println("当前 User 对象：" + user);
     }
 
+    //两个string类型的bean,要加primary
     @Bean
     @Primary
     public String helloWorld() { // 方法名就是 Bean 名称 = "helloWorld"

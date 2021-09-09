@@ -37,7 +37,7 @@ public class HierarchicalDependencyLookupDemo {
         // 将当前类 ObjectProviderDemo 作为配置类（Configuration Class）
         applicationContext.register(ObjectProviderDemo.class);
 
-        // 1. 获取 HierarchicalBeanFactory <- ConfigurableBeanFactory <- ConfigurableListableBeanFactory
+        // 1. 获取 HierarchicalBeanFactory <- ConfigurableBeanFactory <- ConfigurableListableBeanFactory    组合模式,,,Configurable,Listable是两个形容词,组合能力
         ConfigurableListableBeanFactory beanFactory = applicationContext.getBeanFactory();
 //        System.out.println("当前 BeanFactory 的 Parent BeanFactory ： " + beanFactory.getParentBeanFactory());
 

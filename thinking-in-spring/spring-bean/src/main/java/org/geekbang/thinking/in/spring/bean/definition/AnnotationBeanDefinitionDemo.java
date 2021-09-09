@@ -48,7 +48,7 @@ public class AnnotationBeanDefinitionDemo {
         applicationContext.register(AnnotationBeanDefinitionDemo.class);
 
         // 通过 BeanDefinition 注册 API 实现
-        // 1.命名 Bean 的注册方式
+        // 1.命名 Bean 的注册方式    在同一个上下文(BeanFactory)里面是唯一的,所以名字不能重复
         registerUserBeanDefinition(applicationContext, "mercyblitz-user");
         // 2. 非命名 Bean 的注册方法
         registerUserBeanDefinition(applicationContext);
@@ -89,7 +89,7 @@ public class AnnotationBeanDefinitionDemo {
         // 1. 通过 @Bean 方式定义
 
         /**
-         * 通过 Java 注解的方式，定义了一个 Bean
+         * 通过 Java 注解的方式，定义了一个 Bean   别名可以定义多个
          */
         @Bean(name = {"user", "xiaomage-user"})
         public User user() {

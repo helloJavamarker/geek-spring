@@ -33,7 +33,7 @@ public class SingletonBeanRegistrationDemo {
     public static void main(String[] args) throws InterruptedException {
         // 创建 BeanFactory 容器
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
-        // 创建一个外部 UserFactory 对象
+        // 创建一个外部 UserFactory 对象   new一个对象,这个对象并不是spring管理的,可以通过接口注入容器
         UserFactory userFactory = new DefaultUserFactory();
         SingletonBeanRegistry singletonBeanRegistry = applicationContext.getBeanFactory();
         // 注册外部单例对象
@@ -41,7 +41,7 @@ public class SingletonBeanRegistrationDemo {
         // 启动 Spring 应用上下文
         applicationContext.refresh();
 
-        // 通过依赖查找的方式来获取 UserFactory
+        // 通过依赖查找的方式来获取 UserFactory  这里两个对象是同一个对象  并不是代理对象?????   通过new的对象和依赖查找的方式的两种对象
         UserFactory userFactoryByLookup = applicationContext.getBean("userFactory", UserFactory.class);
         System.out.println("userFactory  == userFactoryByLookup : " + (userFactory == userFactoryByLookup));
 

@@ -39,6 +39,9 @@ public class NoUniqueBeanDefinitionExceptionDemo {
         try {
             // 由于 Spring 应用上下文存在两个 String 类型的 Bean，通过单一类型查找会抛出异常
             applicationContext.getBean(String.class);
+            //class NoUniqueBeanDefinitionException extends NoSuchBeanDefinitionException
+            //其实这里设计不太好,NoUniqueBeanDefinitionException继承了NoSuchBeanDefinitionException
+            //所以也可以说这里有语义上的冲突
         } catch (NoUniqueBeanDefinitionException e) {
             System.err.printf(" Spring 应用上下文存在%d个 %s 类型的 Bean，具体原因：%s%n",
                     e.getNumberOfBeansFound(),

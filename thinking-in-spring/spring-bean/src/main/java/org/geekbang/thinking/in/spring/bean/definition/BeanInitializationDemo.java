@@ -29,7 +29,7 @@ import org.springframework.context.annotation.Lazy;
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since
  */
-@Configuration // Configuration Class
+@Configuration // Configuration Class   为啥可以写也可以不写???
 public class BeanInitializationDemo {
 
     public static void main(String[] args) {

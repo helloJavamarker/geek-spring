@@ -35,6 +35,8 @@ public class BeanAliasDemo {
         // 通过别名 xiaomage-user 获取曾用名 user 的 bean
         User user = beanFactory.getBean("user", User.class);
         User xiaomageUser = beanFactory.getBean("xiaomage-user", User.class);
+
+        //equals只是逻辑上的相等,==是地址相等,完全是同一个对象的意思
         System.out.println("xiaomage-user 是否与 user Bean 相同：" + (user == xiaomageUser));
     }
 }

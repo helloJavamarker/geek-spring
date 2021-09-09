@@ -42,7 +42,7 @@ public class AnnotationApplicationContextAsIoCContainerDemo {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         // 将当前类 AnnotationApplicationContextAsIoCContainerDemo 作为配置类（Configuration Class）
         applicationContext.register(AnnotationApplicationContextAsIoCContainerDemo.class);
-        // 启动应用上下文
+        // 启动应用上下文  不refresh试下 has not been refreshed yet
         applicationContext.refresh();
         // 依赖查找集合对象
         lookupCollectionByType(applicationContext);

@@ -80,12 +80,15 @@ public class TypeSafetyDependencyLookupDemo {
         printBeansException("displayBeanFactoryGetBean", () -> beanFactory.getBean(User.class));
     }
 
+    //BeansException 没有这个bean,没有唯一的bean
     private static void printBeansException(String source, Runnable runnable) {
+        //err打印,字体会变红
         System.err.println("==========================================");
         System.err.println("Source from :" + source);
         try {
             runnable.run();
         } catch (BeansException exception) {
+            //生产环境不要这样做,因为会产生阻塞,这是线程安全的
             exception.printStackTrace();
         }
     }
